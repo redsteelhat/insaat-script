@@ -75,6 +75,11 @@ class Project extends Model
         return $this->belongsTo(User::class, 'client_id');
     }
 
+    public function dailySiteReports()
+    {
+        return $this->hasMany(DailySiteReport::class);
+    }
+
     // Scopes
     public function scopeActive($query)
     {

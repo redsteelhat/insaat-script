@@ -38,6 +38,8 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified', 'role:a
     
     // Quotes
     Route::resource('quotes', App\Http\Controllers\Admin\QuoteController::class);
+    Route::post('quotes/{quote}/send', [App\Http\Controllers\Admin\QuoteController::class, 'send'])->name('quotes.send');
+    Route::post('quotes/{quote}/duplicate', [App\Http\Controllers\Admin\QuoteController::class, 'duplicate'])->name('quotes.duplicate');
     
     // Projects
     Route::resource('projects', App\Http\Controllers\Admin\ProjectController::class);
