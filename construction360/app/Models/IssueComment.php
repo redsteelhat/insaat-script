@@ -30,4 +30,10 @@ class IssueComment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Alias for consistency
+    public function creator()
+    {
+        return $this->user();
+    }
 }
