@@ -209,10 +209,16 @@
                     <button onclick="window.print()" class="block w-full bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-700 transition text-center">
                         PDF İndir
                     </button>
-                    @if($quote->status == 'approved' && !$quote->project)
-                        <a href="{{ route('admin.contracts.create', ['quote_id' => $quote->id]) }}" class="block w-full bg-teal-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-teal-700 transition text-center">
-                            Sözleşme Oluştur
-                        </a>
+                    @if($quote->status == 'approved')
+                        @if($quote->project && $quote->project->contract)
+                            <a href="{{ route('admin.contracts.show', $quote->project->contract) }}" class="block w-full border border-purple-600 text-purple-600 px-4 py-2 rounded-lg font-semibold hover:bg-purple-50 transition text-center">
+                                Sözleşmeyi Görüntüle
+                            </a>
+                        @else
+                            <a href="{{ route('admin.contracts.create', ['quote_id' => $quote->id]) }}" class="block w-full bg-teal-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-teal-700 transition text-center">
+                                Sözleşme Oluştur
+                            </a>
+                        @endif
                     @endif
                 </div>
             </div>

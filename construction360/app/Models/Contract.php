@@ -50,4 +50,15 @@ class Contract extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    // Scopes
+    public function scopeSigned($query)
+    {
+        return $query->whereNotNull('signed_at');
+    }
+
+    public function scopeUnsigned($query)
+    {
+        return $query->whereNull('signed_at');
+    }
 }
