@@ -58,6 +58,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified', 'role:a
     
     // Purchase Orders
     Route::resource('purchase-orders', App\Http\Controllers\Admin\PurchaseOrderController::class);
+    Route::post('purchase-orders/{purchaseOrder}/send', [App\Http\Controllers\Admin\PurchaseOrderController::class, 'send'])->name('purchase-orders.send');
     
     // Materials
     Route::resource('materials', App\Http\Controllers\Admin\MaterialController::class);
